@@ -1,0 +1,21 @@
+sudo: required
+services:
+- docker
+language: bash
+
+install: true
+
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t mahnkong/docker-rpi-calibre-feeds2kindle .
+# push image
+- >
+  if [ "$TRAVIS_BRANCH" == "master" -o "$TRAVIS_TAG" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    TAG=${TRAVIS_TAG:=latest}
+    docker tag mahnkong/docker-rpi-calibre-feeds2kindle mahnkong/docker-rpi-calibre-feeds2kindle:$TAG
+    docker push mahnkong/docker-rpi-calibre-feeds2kindle:$TAG
+    docker push mahnkong/docker-rpi-calibre-feeds2kindle
+  fi
