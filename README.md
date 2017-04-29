@@ -1,4 +1,4 @@
-# docker-rpi-calibre-feeds2kindle- Docker image for exporting feeds to kindle via calibre on a raspberrypi
+# docker-rpi-calibre-feeds2kindle - Docker image for exporting feeds to kindle via calibre on a raspberrypi
 ![Travis build status](https://api.travis-ci.org/mahnkong/docker-rpi-calibre-feeds2kindle.svg?branch=master)
 
 ## Usage
