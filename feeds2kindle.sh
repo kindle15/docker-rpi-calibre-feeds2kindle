@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ "$SMTP_RELAY" = "" ]; then
     echo "SMTP_RELAY not defined!"
     exit 1
